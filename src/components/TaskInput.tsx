@@ -1,19 +1,27 @@
 import { useState } from "react";
 
 type Props = {
-    onAdd: (title: string) => void;
+    onAdd: (title: string, date?: string) => void;
 };
 
 export default function TaskInput({ onAdd }: Props) {
     const [value, setValue] = useState("");
+    const [date, setDate] = useState("");
 
     const handleAdd = () => {
-        onAdd(value);
+        onAdd(value, date);
         setValue("");
+        setDate("")
     };
 
     return (
         <div className="flex gap-2 mb-4">
+            <input
+                type="date"
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
+                className="border rounded-lg px-2"
+            />
             <input
                 value={value}
                 onChange={(e) => setValue(e.target.value)}
