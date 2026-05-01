@@ -1,18 +1,21 @@
+import type { Task } from "../types/Task";
 import TaskItem from "./TaskItem";
 
-const tasks = [
-    { id: "1", title: "Learn React", completed: false },
-    { id: "2", title: "Build project", completed: true },
-];
+type Props = {
+    tasks: Task[];
+    onToggle: (id: string) => void;
+    onDelete: (id: string) => void;
+};
 
-export default function TaskList() {
+export default function TaskList({ tasks, onToggle, onDelete }: Props) {
     return (
         <div className="mb-4">
             {tasks.map((task) => (
                 <TaskItem
                     key={task.id}
-                    title={task.title}
-                    completed={task.completed}
+                    task={task}
+                    onToggle={onToggle}
+                    onDelete={onDelete}
                 />
             ))}
         </div>
