@@ -43,20 +43,25 @@ export default function App() {
   };
 
   const filteredTasks = tasks.filter((task) => {
-    if (filter === "active") return !task.completed;
-    if (filter === "completed") return task.completed;
+    const matchesFilter =
+      filter === "all" ||
+      (filter === "active" && !task.completed) ||
+      (filter === "completed" && task.completed);
 
-    return task.title
+    const searchTerm = debouncedSearch.toLowerCase();
+    const matchesSearch = task.title
       .toLowerCase()
-      .includes(debouncedSearch.toLowerCase());
+      .includes(searchTerm);
+
+    return matchesFilter && matchesSearch;
   });
 
 
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center">
       <div className="w-full max-w-2xl bg-white shadow-lg rounded-xl p-6 space-y-4 ">
-        {/* HEADER */}
-        <div>
+
+        <div className="text-center mb-8">
           <h1 className="text-2xl font-semibold text-gray-800">
             Task Manager
           </h1>
