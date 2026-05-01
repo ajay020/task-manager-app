@@ -9,7 +9,7 @@ export default function FilterBar({ filter, setFilter }: Props) {
             <button
                 onClick={() => setFilter("all")}
                 className={filter === "all"
-                    ? "text-blue-500 font-semibold border-b-2 hover:text-blue-400 transition"
+                    ? "text-blue-500 font-semibold active:scale-95 border-b-2 hover:text-blue-400 transition"
                     : ""}
             >
                 All
@@ -18,7 +18,7 @@ export default function FilterBar({ filter, setFilter }: Props) {
             <button
                 onClick={() => setFilter("active")}
                 className={filter === "active"
-                    ? "text-blue-500 font-semibold border-b-2 border-blue-500 hover:text-blue-400 transition"
+                    ? "text-blue-500 font-semibold active:scale-95 border-b-2 border-blue-500 hover:text-blue-400 transition"
                     : ""
                 }
             >
@@ -28,7 +28,7 @@ export default function FilterBar({ filter, setFilter }: Props) {
             <button
                 onClick={() => setFilter("completed")}
                 className={filter === "completed"
-                    ? "text-blue-500 font-semibold border-b-2 border-blue-500 hover:text-blue-400 transition"
+                    ? "text-blue-500 font-semibold active:scale-95 border-b-2 border-blue-500 hover:text-blue-400 transition"
                     : ""
                 }
             >

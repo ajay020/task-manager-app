@@ -10,11 +10,15 @@ type Props = {
 export default function TaskList({ tasks, onToggle, onDelete }: Props) {
 
     if (tasks.length === 0) {
-        return <p className="text-gray-400 text-center">No tasks yet</p>;
+        return (
+            <p className="text-center text-gray-400">
+                No tasks yet. Add one to get started 🚀
+            </p>
+        );
     }
 
     return (
-        <div className="mb-4">
+        <div className="mb-4 transition-all duration-200">
             {tasks.map((task) => (
                 <TaskItem
                     key={task.id}

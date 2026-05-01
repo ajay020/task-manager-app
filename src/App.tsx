@@ -54,7 +54,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-      <div className="w-full max-w-2xl bg-white shadow-lg rounded-xl p-6">
+      <div className="w-full max-w-2xl bg-white shadow-lg rounded-xl p-6 space-y-4 ">
         <h1 className="text-2xl font-bold mb-4">Task Manager</h1>
 
         <TaskInput onAdd={addTask} />

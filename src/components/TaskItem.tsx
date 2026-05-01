@@ -11,11 +11,12 @@ export default function TaskItem({ task, onToggle, onDelete }: Props) {
     const status = getTaskStatus(task.dueDate);
 
     return (
-        <div className="flex items-center justify-between p-2 border-b">
+        <div
+            className="flex items-center justify-between p-2 border-b hover:bg-gray-50 transition rounded">
             <span
                 onClick={() => onToggle(task.id)}
-                className={`
-                    ${task.completed ? "line-through text-gray-400" : ""}
+                className={` cursor-pointer transition
+                    ${task.completed ? "line-through text-gray-400" : "hover:text-blue-500"}
                     ${status === "overdue" ? "text-red-500" : ""}
                     ${status === "today" ? "text-yellow-500" : ""}
               `}

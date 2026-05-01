@@ -30,8 +30,12 @@ export default function TaskInput({ onAdd }: Props) {
                 className="flex-1 border rounded-lg px-3 py-2 outline-none"
             />
             <button
+                disabled={!value.trim()}
                 onClick={handleAdd}
-                className="bg-blue-500 text-white px-4 rounded-lg hover:bg-blue-600 transition"
+                className={`px-4 rounded-lg text-white transition ${value.trim()
+                        ? "bg-blue-500 hover:bg-blue-600"
+                        : "bg-gray-300 cursor-not-allowed"
+                    }`}
             >
                 Add
             </button>
