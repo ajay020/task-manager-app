@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TaskList from "./components/TaskList";
 import FilterBar from "./components/FilterBar";
 import TaskInput from "./components/TaskInput";
 import type { Task } from "./types/Task";
+import { useLocalStorage } from "./hooks/useLocalStorage";
 
 export default function App() {
-  const [tasks, setTasks] = useState<Task[]>([]);
+  const [tasks, setTasks] = useLocalStorage<Task[]>("tasks", []);
 
   const addTask = (title: string) => {
     if (!title.trim()) return;
