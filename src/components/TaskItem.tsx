@@ -11,33 +11,55 @@ export default function TaskItem({ task, onToggle, onDelete }: Props) {
     const status = getTaskStatus(task.dueDate);
 
     return (
-        <div
-            className="flex items-center justify-between p-2 border-b hover:bg-gray-50 transition rounded">
-            <span
-                onClick={() => onToggle(task.id)}
-                className={` cursor-pointer transition
-                    ${task.completed ? "line-through text-gray-400" : "hover:text-blue-500"}
-                    ${status === "overdue" ? "text-red-500" : ""}
-                    ${status === "today" ? "text-yellow-500" : ""}
-              `}
-            >
-                {task.title}
-            </span>
+        <div className="flex items-start justify-between gap-3 p-3
+         hover:shadow-sm
+         rounded-lg border border-gray-200 hover:bg-gray-50 transition-all duration-300">
 
-            <span className="text-xs ml-2 ">
-                {status === "overdue" && "Overdue"}
-                {status === "today" && "Today"}
-            </span>
+            {/* LEFT SIDE */}
+            <div className="flex items-start gap-3 flex-1">
 
-            {task.dueDate && (
-                <p className="text-xs text-gray-400">
-                    {new Date(task.dueDate).toLocaleDateString()}
-                </p>
-            )}
+                {/* Checkbox */}
+                <input
+                    type="checkbox"
+                    checked={task.completed}
+                    onChange={() => onToggle(task.id)}
+                    className="mt-1 w-4 h-4 accent-blue-500 cursor-pointer"
+                />
 
+                {/* TEXT CONTENT */}
+                <div className="flex flex-col">
+
+                    {/* Title */}
+                    <span
+                        className={`text-sm font-medium cursor-pointer transition ${task.completed
+                            ? "line-through text-gray-400"
+                            : "text-gray-800 hover:text-blue-600"
+                            }`}
+                        onClick={() => onToggle(task.id)}
+                    >
+                        {task.title}
+                    </span>
+
+                    {/* Due date */}
+                    {task.dueDate && (
+                        <span
+                            className={`text-xs mt-1 ${status === "overdue"
+                                ? "text-red-500"
+                                : status === "today"
+                                    ? "text-yellow-500"
+                                    : "text-gray-400"
+                                }`}
+                        >
+                            Due: {new Date(task.dueDate).toLocaleDateString()}
+                        </span>
+                    )}
+                </div>
+            </div>
+
+            {/* RIGHT SIDE ACTION */}
             <button
                 onClick={() => onDelete(task.id)}
-                className="text-red-500"
+                className="text-sm text-gray-400 hover:text-red-500 transition font-medium"
             >
                 Delete
             </button>

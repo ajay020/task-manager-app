@@ -18,7 +18,7 @@ export default function TaskList({ tasks, onToggle, onDelete }: Props) {
     }
 
     return (
-        <div className="mb-4 transition-all duration-200">
+        <div className=" space-y-3">
             {tasks.map((task) => (
                 <TaskItem
                     key={task.id}
