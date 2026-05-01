@@ -55,7 +55,15 @@ export default function App() {
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center">
       <div className="w-full max-w-2xl bg-white shadow-lg rounded-xl p-6 space-y-4 ">
-        <h1 className="text-2xl font-bold mb-4">Task Manager</h1>
+        {/* HEADER */}
+        <div>
+          <h1 className="text-2xl font-semibold text-gray-800">
+            Task Manager
+          </h1>
+          <p className="text-sm text-gray-400 mt-1">
+            Stay organized and productive
+          </p>
+        </div>
 
         <TaskInput onAdd={addTask} />
 
@@ -63,9 +71,9 @@ export default function App() {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Search tasks..."
-          className="w-full border rounded-lg px-3 py-2 mb-3
-          border-gray-300 focus:ring-2 focus:ring-blue-300 focus:border-blue-400
-           outline-none"
+          className="w-full border border-gray-300 rounded-lg 
+          px-3 py-2 text-sm focus:ring-2 focus:ring-blue-300
+           focus:border-blue-400 outline-none"
         />
 
         <FilterBar
