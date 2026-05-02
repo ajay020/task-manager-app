@@ -12,3 +12,18 @@ export function getTaskStatus(dueDate?: number) {
 
     return "upcoming";
 }
+
+export function formatDueDate(dueDate?: number) {
+    if (!dueDate) return "";
+
+    const status = getTaskStatus(dueDate);
+    const date = new Date(dueDate);
+
+    if (status === "overdue") return "Overdue";
+    if (status === "today") return "Today";
+
+    return date.toLocaleDateString(undefined, {
+        day: "numeric",
+        month: "long",
+    });
+}

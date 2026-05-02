@@ -1,6 +1,6 @@
-import { X } from "lucide-react";
+import { FileWarning, LucideMessageCircleWarning, X } from "lucide-react";
 import type { Task } from "../types/Task";
-import { getTaskStatus } from "../utils/date";
+import { formatDueDate, getTaskStatus } from "../utils/date";
 
 type Props = {
     task: Task;
@@ -45,14 +45,14 @@ export default function TaskItem({ task, onToggle, onDelete }: Props) {
                     {/* Due date */}
                     {task.dueDate && (
                         <span
-                            className={`text-xs mt-1 ${status === "overdue"
+                            className={`text-xs mt-1 flex items-center ${status === "overdue"
                                 ? "text-red-500"
                                 : status === "today"
                                     ? "text-yellow-500"
                                     : "text-gray-400"
                                 }`}
                         >
-                            Due: {new Date(task.dueDate).toLocaleDateString()}
+                            {formatDueDate(task.dueDate)}
                         </span>
                     )}
                 </div>
