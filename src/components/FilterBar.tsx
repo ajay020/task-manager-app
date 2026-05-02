@@ -21,8 +21,8 @@ export default function FilterBar({
                 <button
                     onClick={() => setFilter("all")}
                     className={
-                        `cursor-pointer ${filter === "all"
-                            ? "text-blue-500 font-semibold active:scale-95 border-b-2 hover:text-blue-400 transition"
+                        `cursor-pointer border rounded-md px-2 py-1 ${filter === "all"
+                            ? "text-gray-700 font-semibold active:scale-95 transition"
                             : ""}`
                     }
                 >
@@ -34,8 +34,8 @@ export default function FilterBar({
                 <button
                     onClick={() => setFilter("active")}
                     className={
-                        `cursor-pointer${filter === "active"
-                            ? "text-blue-500 font-semibold active:scale-95 border-b-2 border-blue-500 hover:text-blue-400 transition"
+                        `cursor-pointer border rounded-md px-2 py-1 text-gray-500${filter === "active"
+                            ? "text-gray-700 font-semibold active:scale-95 transition"
                             : ""}`
                     }
                 >
@@ -47,9 +47,10 @@ export default function FilterBar({
                 <button
                     onClick={() => setFilter("completed")}
                     className={
-                        ` cursor-pointer ${filter === "completed"
-                            ? "text-blue-500 font-semibold active:scale-95 border-b-2 border-blue-500 hover:text-blue-400 transition"
-                            : ""}`
+                        ` cursor-pointer border rounded-md px-2 py-1 text-gray-400 ${filter === "completed"
+                            ? "text-gray-700 font-semibold active:scale-95 transition"
+                            : ""
+                        }`
                     }
                 >
                     Completed <span className="ml-1 text-xs text-gray-400">
