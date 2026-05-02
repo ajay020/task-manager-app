@@ -5,6 +5,7 @@ import TaskInput from "./components/TaskInput";
 import type { Task } from "./types/Task";
 import { useLocalStorage } from "./hooks/useLocalStorage";
 import { useDebounce } from "./hooks/useDebounce";
+import { getTaskStatus } from "./utils/date";
 
 type Filter = "all" | "active" | "completed";
 
@@ -15,11 +16,12 @@ export default function App() {
 
   const debouncedSearch = useDebounce(search, 300);
 
-  const { totalCount, activeCount, completedCount } = useMemo(() => {
+  const { totalCount, activeCount, completedCount, dueCount } = useMemo(() => {
     return {
       totalCount: tasks.length,
       activeCount: tasks.filter(t => !t.completed).length,
-      completedCount: tasks.filter(t => t.completed).length
+      completedCount: tasks.filter(t => t.completed).length,
+      dueCount: tasks.filter(t => getTaskStatus(t.dueDate) === "overdue" && !t.completed).length
     }
   }, [tasks])
 
@@ -66,7 +68,7 @@ export default function App() {
 
   const clearCompleted = () => {
     if (!confirm("Clear all completed tasks?")) return;
-    
+
     setTasks((prev) => prev.filter((task) => !task.completed));
   };
 
@@ -75,13 +77,33 @@ export default function App() {
     <div className="min-h-screen bg-gray-100 flex items-center justify-center">
       <div className="w-full max-w-2xl bg-white shadow-lg rounded-xl p-6 space-y-4 ">
 
-        <div className=" mb-8">
-          <h1 className="text-2xl font-semibold text-gray-800">
-            Task Manager
-          </h1>
-          <p className="text-sm text-gray-400 mt-1">
-            Stay organized and productive
-          </p>
+        <div className=" mb-8 flex justify-between items-center">
+          <div>
+            <h1 className="text-2xl font-semibold text-gray-800">
+              Task Manager
+            </h1>
+            <p className="text-sm text-gray-400 mt-1">
+              Stay organized and productive
+            </p>
+          </div>
+
+          <div className="flex gap-2">
+            <span className="text-xs text-gray-400 border rounded-full px-2">
+              {totalCount} tasks
+            </span>
+
+            {dueCount > 0 && <span className="text-xs text-red-700 bg-red-100 
+            border rounded-full px-2">
+              {dueCount} overdue
+            </span>}
+
+            {completedCount > 0 && <span className="text-xs text-green-700 border  
+            rounded-full px-2
+           bg-green-100">
+              {completedCount} done
+            </span>}
+
+          </div>
         </div>
 
         <TaskInput onAdd={addTask} />
