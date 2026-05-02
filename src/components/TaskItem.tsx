@@ -1,3 +1,4 @@
+import { X } from "lucide-react";
 import type { Task } from "../types/Task";
 import { getTaskStatus } from "../utils/date";
 
@@ -13,6 +14,7 @@ export default function TaskItem({ task, onToggle, onDelete }: Props) {
     return (
         <div className="flex items-start justify-between gap-3 p-3
          hover:shadow-sm
+         group
          rounded-lg border border-gray-200 hover:bg-gray-50 transition-all duration-300">
 
             {/* LEFT SIDE */}
@@ -59,9 +61,10 @@ export default function TaskItem({ task, onToggle, onDelete }: Props) {
             {/* RIGHT SIDE ACTION */}
             <button
                 onClick={() => onDelete(task.id)}
-                className="text-sm text-gray-400 hover:text-red-500 transition font-medium"
+                className="text-sm  hidden p-2 cursor-pointer
+                 text-gray-400 hover:text-red-500 group-hover:flex transition font-medium"
             >
-                Delete
+                <X size={18} />
             </button>
         </div>
     );
