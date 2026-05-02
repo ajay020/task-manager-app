@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import TaskList from "./components/TaskList";
 import FilterBar from "./components/FilterBar";
 import TaskInput from "./components/TaskInput";
@@ -14,6 +14,14 @@ export default function App() {
   const [search, setSearch] = useState("");
 
   const debouncedSearch = useDebounce(search, 300);
+
+  const { totalCount, activeCount, completedCount } = useMemo(() => {
+    return {
+      totalCount: tasks.length,
+      activeCount: tasks.filter(t => !t.completed).length,
+      completedCount: tasks.filter(t => t.completed).length
+    }
+  }, [tasks])
 
   const addTask = (title: string, date?: string) => {
     if (!title.trim()) return;
@@ -61,7 +69,7 @@ export default function App() {
     <div className="min-h-screen bg-gray-100 flex items-center justify-center">
       <div className="w-full max-w-2xl bg-white shadow-lg rounded-xl p-6 space-y-4 ">
 
-        <div className="text-center mb-8">
+        <div className=" mb-8">
           <h1 className="text-2xl font-semibold text-gray-800">
             Task Manager
           </h1>
@@ -75,6 +83,9 @@ export default function App() {
         <FilterBar
           filter={filter}
           setFilter={setFilter}
+          totalCount={totalCount}
+          activeCount={activeCount}
+          completedCount={completedCount}
         />
 
         <input

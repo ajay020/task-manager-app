@@ -1,9 +1,18 @@
 type Props = {
     filter: string;
     setFilter: (value: "all" | "active" | "completed") => void;
+    totalCount: number;
+    activeCount: number;
+    completedCount: number;
 };
 
-export default function FilterBar({ filter, setFilter }: Props) {
+export default function FilterBar({
+    filter,
+    setFilter,
+    totalCount,
+    activeCount,
+    completedCount,
+}: Props) {
     return (
         <div className="flex justify-center gap-4 text-sm mt-2">
             <button
@@ -14,7 +23,9 @@ export default function FilterBar({ filter, setFilter }: Props) {
                         : ""}`
                 }
             >
-                All
+                All <span className="ml-1 text-xs text-gray-400">
+                    {totalCount}
+                </span>
             </button>
 
             <button
@@ -25,7 +36,9 @@ export default function FilterBar({ filter, setFilter }: Props) {
                         : ""}`
                 }
             >
-                Active
+                Active <span className="ml-1 text-xs text-gray-400">
+                    {activeCount}
+                </span>
             </button>
 
             <button
@@ -36,7 +49,9 @@ export default function FilterBar({ filter, setFilter }: Props) {
                         : ""}`
                 }
             >
-                Completed
+                Completed <span className="ml-1 text-xs text-gray-400">
+                    {completedCount}
+                </span>
             </button>
         </div>
     );
