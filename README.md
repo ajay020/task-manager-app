@@ -1,7 +1,11 @@
 # Task Manager App
 
-A clean, modern task management app built with **React, TypeScript, and Tailwind CSS**.
-Designed to go beyond a basic todo app with real-world features like filtering, due dates, and debounced search.
+Built a Task Manager app using React, TypeScript, and Tailwind CSS with features like filtering, debounced search, due date tracking, and persistent storage using custom hooks.
+
+---
+
+## 🌐 Live Demo
+https://task-manager-app-seven-sooty.vercel.app/
 
 ---
 
