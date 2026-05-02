@@ -7,7 +7,7 @@ import { useLocalStorage } from "./hooks/useLocalStorage";
 import { useDebounce } from "./hooks/useDebounce";
 import { getTaskStatus } from "./utils/date";
 
-type Filter = "all" | "active" | "completed";
+export type Filter = "all" | "active" | "completed";
 
 export default function App() {
   const [tasks, setTasks] = useLocalStorage<Task[]>("tasks", []);
@@ -127,6 +127,7 @@ export default function App() {
         />
 
         <TaskList
+          filter = {filter}
           tasks={filteredTasks}
           onToggle={toggleTask}
           onDelete={deleteTask}

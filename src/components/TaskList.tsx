@@ -1,22 +1,37 @@
 import { NotepadText } from "lucide-react";
 import type { Task } from "../types/Task";
 import TaskItem from "./TaskItem";
+import type { Filter } from "../App";
 
 type Props = {
+    filter: Filter;
     tasks: Task[];
     onToggle: (id: string) => void;
     onDelete: (id: string) => void;
 };
 
-export default function TaskList({ tasks, onToggle, onDelete }: Props) {
+export default function TaskList({ filter, tasks, onToggle, onDelete }: Props) {
+
+    let message
+
+    if (filter === "active") {
+        message = `All caught up!
+         No active tasks right now`
+    } else if (filter === "completed") {
+        message = `Nothing completed yet.
+         Check off some tasks first`
+    } else {
+        message = `No tasks yet.
+        Add one to get started`
+    }
+
 
     if (tasks.length === 0) {
         return (
             <div className="flex flex-col items-center gap-2 my-8">
                 <NotepadText size={20} color="gray" />
-                <p className="text-center text-gray-400 ">
-                    No tasks yet. <br />
-                    Add one to get started
+                <p className="text-center text-gray-400 whitespace-pre-line ">
+                    {message}
                 </p>
             </div>
         );
