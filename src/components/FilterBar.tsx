@@ -4,6 +4,7 @@ type Props = {
     totalCount: number;
     activeCount: number;
     completedCount: number;
+    onClearCompleted: () => void;
 };
 
 export default function FilterBar({
@@ -12,47 +13,60 @@ export default function FilterBar({
     totalCount,
     activeCount,
     completedCount,
+    onClearCompleted
 }: Props) {
     return (
-        <div className="flex justify-center gap-4 text-sm mt-2">
-            <button
-                onClick={() => setFilter("all")}
-                className={
-                    `cursor-pointer ${filter === "all"
-                        ? "text-blue-500 font-semibold active:scale-95 border-b-2 hover:text-blue-400 transition"
-                        : ""}`
-                }
-            >
-                All <span className="ml-1 text-xs text-gray-400">
-                    {totalCount}
-                </span>
-            </button>
+        <div className="flex  items-center justify-between mt-2">
+            <div className="flex justify-center gap-4 text-sm mt-2">
+                <button
+                    onClick={() => setFilter("all")}
+                    className={
+                        `cursor-pointer ${filter === "all"
+                            ? "text-blue-500 font-semibold active:scale-95 border-b-2 hover:text-blue-400 transition"
+                            : ""}`
+                    }
+                >
+                    All <span className="ml-1 text-xs text-gray-400">
+                        {totalCount}
+                    </span>
+                </button>
 
-            <button
-                onClick={() => setFilter("active")}
-                className={
-                    `cursor-pointer${filter === "active"
-                        ? "text-blue-500 font-semibold active:scale-95 border-b-2 border-blue-500 hover:text-blue-400 transition"
-                        : ""}`
-                }
-            >
-                Active <span className="ml-1 text-xs text-gray-400">
-                    {activeCount}
-                </span>
-            </button>
+                <button
+                    onClick={() => setFilter("active")}
+                    className={
+                        `cursor-pointer${filter === "active"
+                            ? "text-blue-500 font-semibold active:scale-95 border-b-2 border-blue-500 hover:text-blue-400 transition"
+                            : ""}`
+                    }
+                >
+                    Active <span className="ml-1 text-xs text-gray-400">
+                        {activeCount}
+                    </span>
+                </button>
 
-            <button
-                onClick={() => setFilter("completed")}
-                className={
-                    ` cursor-pointer ${filter === "completed"
-                        ? "text-blue-500 font-semibold active:scale-95 border-b-2 border-blue-500 hover:text-blue-400 transition"
-                        : ""}`
-                }
-            >
-                Completed <span className="ml-1 text-xs text-gray-400">
-                    {completedCount}
-                </span>
-            </button>
+                <button
+                    onClick={() => setFilter("completed")}
+                    className={
+                        ` cursor-pointer ${filter === "completed"
+                            ? "text-blue-500 font-semibold active:scale-95 border-b-2 border-blue-500 hover:text-blue-400 transition"
+                            : ""}`
+                    }
+                >
+                    Completed <span className="ml-1 text-xs text-gray-400">
+                        {completedCount}
+                    </span>
+                </button>
+            </div>
+
+            {/* Clear button */}
+            {completedCount > 0 && (
+                <button
+                    onClick={onClearCompleted}
+                    className="text-xs text-gray-400 hover:text-red-500 transition cursor-pointer"
+                >
+                    Clear completed
+                </button>
+            )}
         </div>
     );
 }

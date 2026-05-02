@@ -64,6 +64,12 @@ export default function App() {
     return matchesFilter && matchesSearch;
   });
 
+  const clearCompleted = () => {
+    if (!confirm("Clear all completed tasks?")) return;
+    
+    setTasks((prev) => prev.filter((task) => !task.completed));
+  };
+
 
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center">
@@ -86,6 +92,7 @@ export default function App() {
           totalCount={totalCount}
           activeCount={activeCount}
           completedCount={completedCount}
+          onClearCompleted={clearCompleted}
         />
 
         <input
