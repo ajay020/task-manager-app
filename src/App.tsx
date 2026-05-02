@@ -72,6 +72,11 @@ export default function App() {
 
         <TaskInput onAdd={addTask} />
 
+        <FilterBar
+          filter={filter}
+          setFilter={setFilter}
+        />
+
         <input
           value={search}
           onChange={(e) => setSearch(e.target.value)}
@@ -79,11 +84,6 @@ export default function App() {
           className="w-full border border-gray-300 rounded-lg 
           px-3 py-2 text-sm focus:ring-2 focus:ring-blue-300
            focus:border-blue-400 outline-none"
-        />
-
-        <FilterBar
-          filter={filter}
-          setFilter={setFilter}
         />
 
         <TaskList
