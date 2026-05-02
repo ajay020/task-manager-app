@@ -39,7 +39,7 @@ export default function TaskInput({ onAdd }: Props) {
                     onClick={() => dateRef.current?.showPicker?.() || dateRef.current?.click()}
                     className="p-2 rounded-lg border border-gray-300 hover:bg-gray-100 transition"
                 >
-                    <Calendar size={18} />
+                    <Calendar size={18} color="gray" />
                 </button>
 
                 {/* ADD BUTTON */}
