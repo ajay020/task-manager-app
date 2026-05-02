@@ -1,4 +1,4 @@
-import { FileWarning, LucideMessageCircleWarning, X } from "lucide-react";
+import { X } from "lucide-react";
 import type { Task } from "../types/Task";
 import { formatDueDate, getTaskStatus } from "../utils/date";
 
@@ -61,7 +61,7 @@ export default function TaskItem({ task, onToggle, onDelete }: Props) {
             {/* RIGHT SIDE ACTION */}
             <button
                 onClick={() => onDelete(task.id)}
-                className="text-sm  hidden p-2 cursor-pointer
+                className="text-sm  hidden cursor-pointer
                  text-gray-400 hover:text-red-500 group-hover:flex transition font-medium"
             >
                 <X size={18} />
