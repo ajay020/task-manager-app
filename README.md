@@ -1,4 +1,4 @@
-# 🧠 Task Manager App
+# Task Manager App
 
 A clean, modern task management app built with **React, TypeScript, and Tailwind CSS**.
 Designed to go beyond a basic todo app with real-world features like filtering, due dates, and debounced search.
@@ -17,7 +17,6 @@ Designed to go beyond a basic todo app with real-world features like filtering, 
 * 🎛️ Filter tasks (All / Active / Completed)
 * 💾 Persistent storage using localStorage
 * 🎨 Clean, responsive UI with Tailwind CSS
-* ⚡ Smooth interactions and micro-feedback
 
 ---
 
@@ -32,15 +31,15 @@ Designed to go beyond a basic todo app with real-world features like filtering, 
 
 ---
 
-## 📸 Preview
+## Preview
 
 <!-- Add screenshot here -->
 
-<!-- ![App Screenshot](./screenshot.png) -->
+![App Screenshot](./src/assets/screenshot.png)
 
 ---
 
-## 🧠 What I Focused On
+## What I Focused On
 
 This project is not just about functionality. I focused on:
 
